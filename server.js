@@ -4,7 +4,7 @@ var mysql = require('mysql');
 const utf8 = require('utf8');
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 8080;
 
 var request = require("request");
 
@@ -35,8 +35,8 @@ var num_plazas= 0;
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
-  port: 8889,
+  password: ".jaguado.",
+  port: 3306,
   database: "plazas_mir"
 });
 
@@ -50,6 +50,7 @@ con.connect(function(err) {
 
 request(options, function (error, response, body) {
 	const $ = cheerio.load(body);
+console.log(body);
 	console.log($(".table-responsive").html());
   	html += $(".table-responsive").html();
   	num_plazas = $("tr").length - 1;
