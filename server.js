@@ -71,7 +71,7 @@ const server = http.createServer((req, res) => {
 		console.log($(".table-responsive").html());
 	  	html += $(".table-responsive").html();
 	  	num_plazas = $("tr").length - 1;
-	  	html+= '</div><br><h2>Plazas libres de nefro en Madrid</h2>'
+	  	html+= '<br><h2>Plazas libres de nefro en Madrid</h2>'
 	  	request(options_libres, function (error2, response2, body2) {
 			const $2 = cheerio.load(body2);
 			
