@@ -14,8 +14,6 @@ var options = { method: 'POST',
   headers: 
    {
      'Content-Type': 'application/x-www-form-urlencoded',
-     Connection: 'keep-alive',
-     'Cache-Control': 'no-cache',
      'Accept-Language': 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3',
      'Accept-Encoding': 'gzip, deflate, br',
      Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' },
@@ -49,6 +47,7 @@ const server = http.createServer((req, res) => {
   	var html = '<!DOCTYPE html><html><head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> </head><body><div class="container"><h2>Plazas de nefrolog&iacute;a ya adjudicadas</h2>';
 	request(options, function (error, response, body) {
 		const $ = cheerio.load(body);
+		console.log(body)
 		console.log($(".table-responsive").html());
 	  	html += $(".table-responsive").html();
 	  	num_plazas = $("tr").length - 1;
