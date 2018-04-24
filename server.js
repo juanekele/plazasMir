@@ -61,19 +61,19 @@ const server = http.createServer((req, res) => {
   	var html = '<!DOCTYPE html><html><head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> </head><body><div class="container"><h2>Plazas de nefrolog&iacute;a ya adjudicadas</h2>';
 	request(options, function (error, response, body) {
 		const $ = cheerio.load(body);
-		
+		console.log(body);
 		console.log($(".table-responsive").html());
 	  	html += $(".table-responsive").html();
 	  	num_plazas = $("tr").length - 1;
 	  	html+= '<br><h2>Plazas libres de nefro en Madrid</h2>'
 	  	request(options_libres, function (error2, response2, body2) {
 			const $2 = cheerio.load(body2);
-			
+			console.log(body2);
 			
 		  	html += $2("#divPlazas").html();
 		  	num_plazas = $("tr").length - 1;
 		  	html+= '</div></body></html>';
-		  	console.log(html);
+
 		  	res.end(html);
 		  	if(num_plazas > 6) {
 
