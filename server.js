@@ -73,6 +73,7 @@ const server = http.createServer((req, res) => {
 		  	html += $2("#divPlazas").html();
 		  	num_plazas = $("tr").length - 1;
 		  	html+= '</div></body></html>';
+		  	console.log(html);
 		  	res.end(html);
 		  	if(num_plazas > 6) {
 
